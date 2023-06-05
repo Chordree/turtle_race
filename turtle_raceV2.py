@@ -13,7 +13,7 @@ colours = ['red', 'yellow', 'grey', 'green', 'blue', 'orangered', 'cyan', 'magen
 
 def enter_num_racers():
     while True:
-        val = (input('enter num: '))
+        val = (input('enter number of races: '))
         if val.isdigit():
             val = int(val)
             if val not in range(3, 13):
@@ -30,7 +30,7 @@ def race_screen():
     display.setup(width, height)
 
 
-# try former spacing to see if they will align with track
+# try the commented  spacing and racer.setpos() below to see if they will align with track
 def racers(colour_list):
     icons = []
     for i, color in enumerate(colour_list):
@@ -73,7 +73,7 @@ def main():
     race_screen()
     random.shuffle(colours)
     colors = colours[:num_racers]
-    print(colors)  # not really necessary
+    print(colors)  # not really necessary, just printing the shuffle function to show you the shuffle effect
     track_lines(num_racers)
     cars = racers(colors)
     while True:
@@ -84,9 +84,11 @@ def main():
             car.forward(dst)
             if car.pos()[1] >= height / 2 - 10:  # .pos(): returns the x, y coordinate
                 print(car.pos())  # not really important .. just showing the tuple value in the winner coordinate
-                print(f'the winner is {car.color()}')
-                return f'the winner is {car.color()}'
-                # see to use .index method in tms version
+                print(f'the winner is {car.color()}') # see to use .index method to print winner in a cleaner way
+                return f'the champion is {car.color()}'  # this would display output if you call print(main())
+                # however the return statement is till important to break the while loop and end the fuction call  
+                # not to include return incase you remove the line above as the while loop would keep running 
+                
 
 
 main()
