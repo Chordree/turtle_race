@@ -52,13 +52,13 @@ def racers(colour_list, shp):
 
 
 def track_lines(val):
-    for i in range(val - 1):
-        s = width / val
+    for i in range(val + 1):
+        s = width / (val + 1)  # s is just the spacing btw tracks 
         track = turtle.Turtle()
         track.color('violet')  # you can decide not to add a color .. it would be black by default
         track.left(90)
         track.penup()
-        track.setpos((-width / 2) + s * (i + 1), (-height / 2))  # make this more even and set the track before racers
+        track.setpos((-width / 2) + s/2 + s*i, (-height / 2)) 
         track.pendown()
         track.forward(height + 8)  # the addition is to hide the arrow head of the track lines
     # drawing of finish line .. not really important

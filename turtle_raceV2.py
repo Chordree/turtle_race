@@ -7,7 +7,7 @@ import turtle
 
 
 width, height = 800, 700
-colours = ['red', 'yellow', 'grey', 'green', 'blue', 'orangered', 'cyan', 'magenta',
+colours = ['red', 'yellow', 'grey', 'green', 'blue', 'orange', 'cyan', 'magenta',
            'black', 'indigo', 'pink', 'brown']
 
 
@@ -30,7 +30,7 @@ def race_screen():
     display.setup(width, height)
 
 
-# try the commented  spacing and racer.setpos() below to see if they will align with track
+# try the commented  racer.setpos() below to see how it would arrange the racers 
 def racers(colour_list):
     icons = []
     for i, color in enumerate(colour_list):
@@ -51,12 +51,13 @@ def racers(colour_list):
 
 def track_lines(val):
     for i in range(val - 1):
-        s = width / val
+        s = width / (val + 1)
         track = turtle.Turtle()
-        track.color('violet')  # you can decide not to add a color .. it would be black by default
+        track.color('orangered')  # you can decide not to add a color .. it would be black by default
         track.left(90)
         track.penup()
-        track.setpos((-width / 2) + s * (i + 1), (-height / 2))  # make this more even and set the track before racers
+        # compare the trackline pattern here with the one in shapes_race in this same repo
+        track.setpos((-width / 2) + s/2 + s + s*i, (-height / 2))
         track.pendown()
         track.forward(height + 8)  # the addition is to hide the arrow head of the track lines
     # drawing of finish line .. not really important
